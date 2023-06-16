@@ -1,0 +1,25 @@
+.briefing {
+    margin-left: 7%;
+    margin-top: 3%;
+    font-size: xx-large;
+}
+.date_time {
+    margin-left: 7%;
+    font-size: 16;
+}
+.tv-screen {
+    width: 50%;
+    height: auto;
+    max-height: 65vh;
+    margin: 0 auto;
+    position: relative;
+    margin-top: 2%;
+  }
+.carousel {
+    box-shadow: 0 0 20px 5px rgba(0, 0, 0, 0.5);
+  }
+  
+.background {
+    background-image: url('carousel_images/background.png');
+    background-position: center;
+  }
