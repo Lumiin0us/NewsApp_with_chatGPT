@@ -1,0 +1,94 @@
+.briefing {
+    margin-left: 7%;
+    margin-top: 3%;
+    font-size: xx-large;
+}
+.date_time {
+    margin-left: 7%;
+    font-size: 16;
+}
+.tv-screen {
+    width: 50%;
+    height: auto;
+    max-height: 65vh;
+    margin: 0 auto;
+    position: relative;
+    margin-top: 2%;
+  }
+.carousel {
+    box-shadow: 0 0 20px 5px rgba(0, 0, 0, 0.5);
+  }
+  
+.background {
+    background-image: url('../static/carousel_images/background.png');
+    background-position: center;
+  }
+
+  .card {
+    width: 300px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    padding: 20px;
+    margin-bottom: 20px;
+  }
+
+  /* Card title */
+  .card-title {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+
+  /* Card content */
+  .card-content {
+    font-size: 16px;
+  }
+  .news-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+
+  /* Article card */
+  .article-card {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    padding: 20px;
+    margin-bottom: 20px;
+  }
+
+  /* Article title */
+  .article-title {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+
+  /* Article content */
+  .article-content {
+    font-size: 16px;
+  }
+  .fab {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #222222;
+    color: #fff;
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    text-align: center;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.25);
+    cursor: pointer;
+    z-index: 999;
+}
+
+.fab:hover {
+    background-color: #3e3e3e;
+}
+
+.fab i {
+    line-height: 56px;
+}
