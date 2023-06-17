@@ -12,9 +12,29 @@ class FlaskInstance(Flask):
 
 app = FlaskInstance(__name__)
 
+counter = 0
 @app.route('/')
-def news():
-    return render_template('app_ui.html',title=news_title, description=news_description)
+def news_loading_page():
+    return render_template('app_loading.html')
+
+@app.route('/loaded')
+def loading_done():
+    global counter 
+    if news_title is None or news_description is None:
+        return "Data not loaded yet. Please wait or refresh the page."
+    else:
+        if counter + 8 <= len(news_title):
+            return render_template('app_ui.html',title=news_title, description=news_description, index=counter)
+
+        else:
+            counter = 0
+            return render_template('app_ui.html',title=news_title, description=news_description, index=counter)
+    
+@app.after_request
+def after_request(response):
+    global counter 
+    counter += 8 
+    return response
 
 if __name__ == '__main__':
     app.run(host="0.0.0.0", port=8000)

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../static/app_loading.css">
+    <title>Document</title>
+</head>
+<body>
+    <div id="loading-wrapper">
+        <div id="loading-text">LOADING</div>
+        <div id="loading-content"></div>
+      </div>
+      <script>
+        window.onload = function() {
+            // Make an AJAX request to check if the API is loaded
+            var xhr = new XMLHttpRequest();
+            xhr.open('GET', '/loaded', true);
+            xhr.onreadystatechange = function() {
+                if (xhr.readyState === 4 && xhr.status === 200) {
+                    // API data is loaded, redirect to the UI page
+                    window.location.href = '/loaded';
+                }
+            };
+            xhr.send();
+        };
+    </script>
+</body>
+</html>
