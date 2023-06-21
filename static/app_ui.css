@@ -109,7 +109,7 @@
     margin-top: 1%;
     margin-left: 6%;
     height: 12rem;
-    position: absolute;
+    /* position: absolute; */
   background:#fff;
 }
 h2 {
@@ -118,16 +118,16 @@ h2 {
 }
 #slide1 {
     /* margin: 10px 30px; */
-    position: absolute;
+    /* position: absolute; */
     overflow: hidden;
 }
 
 .slider {
     /* top: 0; */
     width: 80%;
-    display: none;
-    margin: 0 auto;
-    position: relative
+    /* display: none; */
+    /* margin: 0 auto; */
+    /* position: relative */
 }
 .slider:first-of-type {
   display:block;
