@@ -21,17 +21,26 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="#">Home</a>
+                    <a class="nav-link active" aria-current="page" href="#">Africa</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Features</a>
+                    <a class="nav-link" href="#">America</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Pricing</a>
+                    <a class="nav-link" href="#">Asia</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link disabled">Disabled</a>
+                    <a class="nav-link">Australia</a>
                 </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#">Canada</a>
+              </li>
+              <li class="nav-item">
+                  <a class="nav-link" href="#">Europe</a>
+              </li>
+              <li class="nav-item">
+                  <a class="nav-link">Middle East</a>
+              </li>
                 </ul>
             </div>
             </div>
@@ -52,22 +61,22 @@
                   <div class="carousel-item active">
                     <img src="../static/carousel_images/image_one.png" class="d-block w-100 img-carousel" alt="...">
                     <div class="carousel-caption d-none d-md-block">
-                      <h5>{{ title[index] }}</h5>
-                      <p>{{ description[index] }}</p>
+                      <h5>title[index] </h5>
+                      <p>description[index] </p>
                     </div>
                   </div>
                   <div class="carousel-item">
                     <img src="../static/carousel_images/image_two.png" class="d-block w-100 img-carousel" alt="...">
                     <div class="carousel-caption d-none d-md-block">
-                      <h5>{{ title[index + 1] }}</h5>
-                      <p>{{ description[index + 1] }}</p>
+                      <h5> title[index + 1] </h5>
+                      <p> description[index + 1] </p>
                     </div>
                   </div>
                   <div class="carousel-item">
                     <img src="../static/carousel_images/image_three.png" class="d-block w-100 img-carousel" alt="...">
                     <div class="carousel-caption d-none d-md-block">
-                      <h5>{{ title[index + 2] }}</h5>
-                      <p>{{ description[index + 2] }}</p>
+                      <h5> title[index + 2] </h5>
+                      <p> description[index + 2] </p>
                     </div>
                   </div>
                 </div>
@@ -84,44 +93,12 @@
     </div>
               <div class="briefing">Briefings</div>
               <div class="date_time"></div>
-
-              <div class="container text-center">
-  <div class="row">
-    <div class="col-sm-8">
-        <div class="news-container">
-            <div class="article-card">
-              <h2 class="article-title">{{ title[index + 3] }}</h2>
-              <p class="article-content">{{ description[index + 3] }}</p>
-            </div>
-    </div>
-    <div class="col-sm-4">
-        <div class="card">
-            <h2 class="card-title">{{ title[index + 4] }}</h2>
-            <p class="card-content">{{ description[index + 4] }}</p>
-          </div>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-sm">
-        <div class="card">
-            <h2 class="card-title">{{ title[index + 5] }}</h2>
-            <p class="card-content">{{ description[index + 5] }}</p>
-          </div>
-    </div>
-    <div class="col-sm">
-        <div class="card">
-            <h2 class="card-title">{{ title[index + 6] }}</h2>
-            <p class="card-content">{{ description[index + 6] }}</p>
-          </div>
-    </div>
-    <div class="col-sm">
-        <div class="card">
-            <h2 class="card-title">{{ title[index + 7] }}</h2>
-            <p class="card-content">{{ description[index + 7] }}</p>
-          </div>
-    </div>
-  </div>
-</div>
+        
+              <div id="slide1" class="container">
+                <h2>Slider 1</h2>
+                   <div class="slider">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer vitae nunc nunc. Nam aliquam, velit rutrum vehicula elementum, massa libero mattis sapien, vitae sagittis quam ante id ligula. Cras bibendum porttitor orci, ac condimentum arcu bibendum et. Mauris vulputate nisi auctor ultricies feugiat. </div>
+                  <!-- slide1 -->
+              </div> <!-- container -->
 <div class="fab" id="refreshButton">
   <i class="fas fa-redo-alt"></i>
 </div>
@@ -138,6 +115,7 @@
         refreshButton.addEventListener('click', function() {
         window.location.reload();
         })
+
         // const container = document.getElementById('canvasContainer');
         // const scene = new THREE.Scene();
     

@@ -1,11 +1,14 @@
 from flask import Flask, render_template
 from get_news_api import get_news, URL
+from get_global_news import get_global_news
 
 class FlaskInstance(Flask):
     def run(self, host=None, port=None, debug=None, load_dotenv=True, **options):
         global news_title
         global news_description
+        global world_news
         title, description = get_news(URL)
+        world_news = get_global_news()
         news_title = title
         news_description = description
         super().run(host=host, port=port, debug=debug, load_dotenv=load_dotenv, **options)
@@ -29,7 +32,11 @@ def loading_done():
         else:
             counter = 0
             return render_template('app_ui.html',title=news_title, description=news_description, index=counter)
-    
+
+@app.route('/world')
+def global_news():
+    return render_template('app_ui.html', world_news=world_news)
+
 @app.after_request
 def after_request(response):
     global counter 
