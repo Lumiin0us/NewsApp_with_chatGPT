@@ -8,7 +8,7 @@ import os
 import time
 
 URL = "https://www.nytimes.com/international/section/world"
-COUNTRIES = ["europe"]
+COUNTRIES = ["africa, americas, asia, asutralia, canada, europe, middleeast"]
 
 user_agents_list = [
     'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/99.0.4844.68 Safari/537.36',
@@ -31,12 +31,22 @@ user_agents_list = [
     'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Firefox/88.0',
     'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Firefox/88.0',
     'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:88.0) Gecko/20100101 Firefox/88.0',
+    'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/99.0.4844.68 Safari/537.36',
+    'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Firefox/88.0',
+    'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/99.0.4844.68 Safari/537.36',
+    'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Firefox/88.0',
+    'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:88.0) Gecko/20100101 Firefox/88.0',
+    'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/99.0.4844.68 Safari/537.36',
+    'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Firefox/88.0',
+    'Mozilla/5.0 (iPhone; CPU iPhone OS 14_5 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/14.1 Mobile/15E148 Safari/604.1',
+    'Mozilla/5.0 (iPad; CPU OS 14_5 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/14.1 Mobile/15E148 Safari/604.1',
+    'Mozilla/5.0 (Android 11; Mobile; rv:88.0) Gecko/88.0 Firefox/88.0',
 ]
 
 os.chdir("/Users/abdurrehman/Desktop/NewsApp_with_chatGPT/NewsApp_with_chatGPT/files")
 
 session = requests.Session()
-retry = Retry(connect=5, backoff_factor=2)
+retry = Retry(connect=5, backoff_factor=3)
 adapter = HTTPAdapter(max_retries=retry)
 session.mount('http://', adapter)
 session.mount('https://', adapter)
@@ -47,34 +57,33 @@ for region in COUNTRIES:
         soup = BeautifulSoup(response.content, 'html.parser')
         anchor_tags = soup.select('.css-1l4spti a')
 
-        all_articles = []  # Initialize list to store all articles
-        
+        all_articles = []  
         for index, anchor_tag in enumerate(anchor_tags):
-            para_list = []  # Initialize para_list for each article
-            print(f"ARTICLE_{region}_{index}")
-            href = anchor_tag['href']
-            html = session.get(f"https://www.nytimes.com{str(href)}", headers={'User-Agent': random.choice(user_agents_list)})
-            detail_soup = BeautifulSoup(html.content, "html.parser")
-            section = detail_soup.find("section", class_="meteredContent css-1r7ky0e")
-            
+            if index == 1 or index == 2:
+                pass
+            else:
+                para_list = [] 
+                print(f"ARTICLE_{region}_{index}")
+                href = anchor_tag['href']
+                html = session.get(f"https://www.nytimes.com{str(href)}", headers={'User-Agent': random.choice(user_agents_list)})
+                detail_soup = BeautifulSoup(html.content, "html.parser")
+                section = detail_soup.find("section", class_="meteredContent css-1r7ky0e")
             if section is not None:
                 try:
                     p_tags = section.find_all("p")
-                    print(len(p_tags))
-                    print(p_tags[8].getText())
                     for index_, p_tag in enumerate(p_tags):
                         if p_tag is not None:
                             print(f"ARTICLE_{region}_Para_{index_}")
                             para_list.append(p_tag.getText())
+                        else: 
+                            break
                 except Exception as e: 
-                    print("[EXCEPTION] ", e)
+                    print("[EXCEPTION - INNER TRY-CATCH] ", e)
 
-            
             article_data = {
                 f"{region}_{index + 1}": para_list
             }
             all_articles.append(article_data)
-        
         if all_articles:
             print("\n[CREATING FILE]\n")
             if not os.path.exists(f"{region}.json"):
@@ -87,6 +96,6 @@ for region in COUNTRIES:
                 
                 with open(f"{region}.json", "w") as json_file:
                     json.dump(data, json_file)
-    
-    except:
+    except Exception as e:
+        print("[EXCEPTION - OUTISDE TRY-CATCH] ", e)
         time.sleep(5)
