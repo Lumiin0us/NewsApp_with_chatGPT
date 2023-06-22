@@ -22,14 +22,14 @@ def wait_for_rate_limit():
 
 def open_ai():
     region_list, COUNTRIES = fetch_data()
-    API_KEY = "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"
+    API_KEY = "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"
     MAX_WORDS = 300
     openai.api_key = API_KEY
     response = []
     try:
         for region_index, regions in enumerate(region_list):
             region_dict = {}
-            if COUNTRIES[region_index] == "canada":
+            if COUNTRIES[region_index] == "europe":
                 for news_index, news in enumerate(regions[COUNTRIES[region_index]]):
                     summarized_news_responses = []
                     if len(news) > 0:
@@ -39,7 +39,7 @@ def open_ai():
                                 model='gpt-3.5-turbo',
                                 messages=[{
                                     'role': 'user', 
-                                    'content': f'Could you please understand, create a logical frame, assign a topic heading and summarize this article in a formal and concise manner: {truncated_article}',
+                                    'content': f'Could you summarize this article, I only need two things from it, a heading and a summary so in the response try to use this format: Heading: , Summary:  -> {truncated_article}',
                                 }]
                             )
                             summarized_news_responses.append(completion_response)
