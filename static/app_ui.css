@@ -1,3 +1,9 @@
+body {
+  --bs-tertiary-bg-rgb: 248,249,250;
+  --bs-bg-opacity: 1;
+  background-color: rgba(var(--bs-tertiary-bg-rgb),var(--bs-bg-opacity))!important;
+
+}
 .briefing {
     margin-left: 7%;
     margin-top: 3%;
@@ -18,10 +24,13 @@
 .carousel {
     box-shadow: 0 0 20px 5px rgba(0, 0, 0, 0.5);
   }
-  
+.w-100 {
+    width: 100%!important;
+    height: 55vh;
+}
 .background {
     background-image: url('../static/carousel_images/background.png');
-    background-position: center;
+    height: 55vh;
   }
 
   .card {
@@ -108,26 +117,23 @@
     padding: 1.3rem;
     margin-top: 1%;
     margin-left: 6%;
-    height: 12rem;
     /* position: absolute; */
-  background:#fff;
+    --bs-tertiary-bg-rgb: 248,249,250;
+    --bs-bg-opacity: 1;
+    background-color: rgba(var(--bs-tertiary-bg-rgb),var(--bs-bg-opacity))!important;
 }
 h2 {
   text-align:center;
   text-shadow: 3px 4px 7px #ddd;
-}
-#slide1 {
-    /* margin: 10px 30px; */
-    /* position: absolute; */
-    overflow: hidden;
 }
 
 .slider {
     /* top: 0; */
     width: 80%;
     /* display: none; */
-    /* margin: 0 auto; */
+    margin: 0 auto;
     /* position: relative */
+
 }
 .slider:first-of-type {
   display:block;

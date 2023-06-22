@@ -14,7 +14,7 @@
     <div>
         <nav class="navbar navbar-expand-lg bg-body-tertiary">
             <div class="container-fluid">
-            <a class="navbar-brand" href="#">NewsAI</a>
+            <a class="navbar-brand" href="/world">NewsAI</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -95,8 +95,22 @@
               <div class="date_time"></div>
         
               <div id="slide1" class="container">
-                <h2>Slider 1</h2>
-                   <div class="slider">{{world_news}}</div>
+                <h2>
+                  {% set summary_index = world_news.find('Summary:') %}
+                  {% set heading_index = world_news.find('Heading:') %}
+                  {% set heading = world_news[heading_index + 8: summary_index] %}
+                  {% set summary = world_news[summary_index + 8:] %}
+                  {{ heading }}               
+
+                </h2>
+                   <div class="slider">
+                    {% set summary_index = world_news.find('Summary:') %}
+                    {% set heading_index = world_news.find('Heading:') %}
+                    {% set heading = world_news[heading_index + 8: summary_index] %}
+                    {% set summary = world_news[summary_index + 8:] %}
+
+                    {{ summary }}
+                  </div>
                   <!-- slide1 -->
               </div> <!-- container -->
               <div style="margin-top: 5%;">
